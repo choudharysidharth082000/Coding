@@ -26,3 +26,28 @@ public:
         return mainAns;        
     }
 };
+//----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+//Using the Swap Approach
+class Solution {
+public:
+    //using the Swap approach removinf the space compelxity
+    void findAns(vector<int> &nums, vector<vector<int>> &mainAns, int pos)
+    {
+        if(pos == nums.size()){mainAns.push_back(nums); return;}
+        int n = nums.size();
+        for(int i=pos;i<n;i++)
+        {
+            swap(nums[pos], nums[i]);
+            findAns(nums, mainAns, pos +1);
+            swap(nums[i], nums[pos]);
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> mainAns;
+        int pos =0;
+        findAns(nums, mainAns, pos);
+        return mainAns;
+    }
+};
